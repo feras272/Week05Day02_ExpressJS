@@ -13,6 +13,10 @@ const data = [
     {user:"Yousif", password:"1111"}
 ]
 
+app.get("/user", (req, res) => {
+    res.send(data)
+});
+
 app.get("/", (req, res) => {
     res.send('This is respond GET http://');
 });
