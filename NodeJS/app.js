@@ -5,6 +5,10 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+// Midleware : read what iside post (body)
+// use => using this operation before any request
+app.use(express.json)
+
 const data = [
     {user:"Feras", password:"1234"},
     {user:"Ahmad", password:"5678"},
@@ -14,13 +18,15 @@ const data = [
 ]
 
 app.get("/user", (req, res) => {
-    res.send(data)
+    res.json(data[0])
 });
 
 app.get("/", (req, res) => {
-    res.send('This is respond GET http://');
+    res.send('This is respond GET http://localhost:3000/');
 });
 
+
+// Request => Body => raw => JSON 
 app.post("/", (req, res) => {
     res.send('This is respond POST');
 });
