@@ -17,8 +17,10 @@ const data = [
     {user:"Yousif", password:"1111"}
 ]
 
+// Request => Body => raw => JSON 
 app.get("/user", (req, res) => {
-    res.json(data[0])
+    // READ data form Front-End REQ
+    res.json(data)
 });
 
 app.get("/", (req, res) => {
@@ -26,9 +28,9 @@ app.get("/", (req, res) => {
 });
 
 
-// Request => Body => raw => JSON 
 app.post("/", (req, res) => {
-    res.send('This is respond POST');
+    data.push(req.body)
+    res.json("Success add new element");
 });
 
 app.put("/", (req, res) => {
