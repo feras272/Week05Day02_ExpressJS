@@ -41,6 +41,8 @@ app.put("/user-put", (req, res) => {
 
 app.delete("/user-delete", (req, res) => {
     res.send('This is respond DELETE');
+    data.shift()
+    res.json('Item has been deleted successfully')
 });
 
 app.listen(port, () => {
