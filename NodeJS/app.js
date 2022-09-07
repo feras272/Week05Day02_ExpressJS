@@ -17,27 +17,29 @@ const data = [
     {user:"Yousif", password:"1111"}
 ]
 
-// Request => Body => raw => JSON 
-app.get("/user", (req, res) => {
-    // READ data form Front-End REQ
-    res.json(data)
-});
-
 app.get("/", (req, res) => {
     res.send('This is respond GET http://localhost:3000/');
 });
 
+// Request => Body => raw => JSON 
+app.get("/user-get", (req, res) => {
+    // READ data form Front-End REQ
+    res.json(data)
+});
 
-app.post("/", (req, res) => {
+
+app.post("/user-post", (req, res) => {
+    console.log(req.body);
     data.push(req.body)
     res.json("Success add new element");
 });
 
-app.put("/", (req, res) => {
-    res.send('This is respond PUT http://localhost:3000');
+app.put("/user-put", (req, res) => {
+    console.log(req.params);
+    data[req.params.index].user = '??????'
 });
 
-app.delete("/", (req, res) => {
+app.delete("/user-delete", (req, res) => {
     res.send('This is respond DELETE');
 });
 
